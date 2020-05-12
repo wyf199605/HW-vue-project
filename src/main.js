@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import App from './App.vue';
 import store from './store';
+import './plugins/px2rem';
 import '@/style/index.scss';
 
 Vue.config.productionTip = false;

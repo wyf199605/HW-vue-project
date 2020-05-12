@@ -18,6 +18,7 @@ if (sysConfig.px2rem && sysConfig.px2rem.enabled) {
         loader: 'webpack-px2rem-loader',
         query: options
     });
+    process.env.VUE_APP_PX2REM = 'enabled';
 }
 
 process.env.VUE_APP_TITLE = sysConfig.title || '';

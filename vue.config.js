@@ -10,7 +10,8 @@ if (sysConfig.px2rem && sysConfig.px2rem.enabled) {
     let options = Object.assign({
         basePx: 16,
         min: 1,
-        floatWidth: 3
+        floatWidth: 3,
+        designWidth: 1920,
     }, sysConfig.px2rem.options || {});
 
     moduleRules.push({
@@ -19,6 +20,8 @@ if (sysConfig.px2rem && sysConfig.px2rem.enabled) {
         query: options
     });
     process.env.VUE_APP_PX2REM = 'enabled';
+    process.env.VUE_APP_PX2REM_DESIGN_WIDTH = options.designWidth;
+    process.env.VUE_APP_PX2REM_BASE_PX = options.basePx;
 }
 
 process.env.VUE_APP_TITLE = sysConfig.title || '';

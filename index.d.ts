@@ -34,5 +34,6 @@ interface SystemConfig {
         basePx: number, // 1rem=npx 默认16
         min: number, // 只会转换大于min的px 默认 1
         floatWidth: number, // 转换后的rem值保留的小数点后位数 默认为3
+        designWidth?: number, // 设计稿宽度，默认1920
     }>;
 }

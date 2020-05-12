@@ -1,10 +1,15 @@
 if (process.env.VUE_APP_PX2REM === 'enabled') {
-    let html = document.documentElement;
-    let fontSize = html.offsetWidth / 120;
+    const designWidth = Number(process.env.VUE_APP_PX2REM_DESIGN_WIDTH),
+        basePx = Number(process.env.VUE_APP_PX2REM_BASE_PX),
+        scale = designWidth / basePx;
+
+    const html = document.documentElement;
+    let fontSize = html.offsetWidth / scale;
+
     html.style.fontSize = fontSize + 'px';
 
     window.onresize = () => {
-        fontSize = html.offsetWidth / 120;
+        fontSize = html.offsetWidth / scale;
         html.style.fontSize = fontSize + 'px';
     };
 

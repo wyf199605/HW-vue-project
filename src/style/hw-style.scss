@@ -1,0 +1,39 @@
+.hw-input {
+  box-sizing: border-box;
+  width: 60px;
+  height: 32px;
+  line-height: 32px;
+  font-size: 16px;
+  background-color: #fdfeff;
+  border-radius: 4px;
+  border: solid 1px #cbd5e3;
+  transition: border-color .3s;
+  text-align: left;
+  padding: 0 7px;
+  color: #4f5d79;
+
+  &:focus {
+    border-color: $primary;
+  }
+}
+
+.hw-row {
+  @include flex(flex-start);
+  @include wh;
+
+  & > .hw-cell {
+    flex: 1 1 auto;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &.hw-row_vertical {
+    flex-direction: column;
+
+    & > .hw-cell {
+      width: 100%;
+      height: auto;
+    }
+  }
+}

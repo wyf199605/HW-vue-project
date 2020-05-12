@@ -16,4 +16,7 @@
 </script>
 
 <style lang="scss">
+    #app {
+        @include coverScreen;
+    }
 </style>

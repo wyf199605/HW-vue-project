@@ -19,7 +19,6 @@
 
 .hw-row {
   @include flex(flex-start);
-  @include wh;
 
   & > .hw-cell {
     flex: 1 1 auto;

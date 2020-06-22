@@ -375,10 +375,12 @@ SW.Ws2_1XHRInvoker = SW.Ws2_1Invoker.extend({
                 ioBuffer.writeInt32(type.length);
                 ioBuffer.writeChars(type);
                 if (p instanceof Date)
-                    p=p.format('yyyy/MM/dd hh:mm:ss');
-                var writer = this._getWriter(ioBuffer,p);
-                ioBuffer.writeInt32(typeof(p) == "number"?4:(p instanceof Double?8:p.length));
-                writer.call(ioBuffer,p instanceof Double || p instanceof Decimal? p.value : p);
+                    p = p.format('yyyy/MM/dd hh:mm:ss');
+                var writer = this._getWriter(ioBuffer, p);
+                var len = typeof p == "string" ? Sun.Util.Data.strToUnicode(p).length :
+                    (typeof(p) == "number" ? 4 : (p instanceof Double ? 8 : p.length));
+                ioBuffer.writeInt32(len);
+                writer.call(ioBuffer, p instanceof Double || p instanceof Decimal ? p.value : p);
             }
         }
         return ioBuffer.buffer;
@@ -616,10 +618,13 @@ SW.Ws3_0_Promise = Sun.Class.extend({
             var value = baseParams[key];
             if(Object.prototype.toString.call(value) === "[object Object]"){//object 对象
                 for(var k in value){
-                    var param = value[k];
-                    var writer = this._getWriter(ioBuffer,param);
-                    ioBuffer.writeInt32(typeof(param) == "number"?4:(param instanceof Double?8:param.length));
-                    writer.call(ioBuffer,param instanceof Double? param.value : param);
+                    var p = value[k];
+                    var writer = this._getWriter(ioBuffer,p);
+                    // ioBuffer.writeInt32(typeof(p) == "number"?4:(p instanceof Double?8:p.length));
+                    var len = typeof p == "string" ? Sun.Util.Data.strToUnicode(p).length :
+                        (typeof(p) == "number" ? 4 : (p instanceof Double ? 8 : p.length));
+                    ioBuffer.writeInt32(len);
+                    writer.call(ioBuffer,p instanceof Double? p.value : p);
                 }
             }
             else{

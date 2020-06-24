@@ -7,6 +7,7 @@ type MapResFields = 'provLine' | 'cityLine' | 'countyLine' | 'townLine'
 interface HwConfig {
     base: {
         service: string, // 请求地址
+        wsService?: string,
     },
     map?: {
         maxZoom?: number, // 地图最大缩放等级

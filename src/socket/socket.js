@@ -11,7 +11,9 @@ export default class HwSocket {
      * @type {HeartCheck}
      */
     static defaultHeartCheckOptions = {
-        interval: 55000
+        interval: 55000,
+        resultType: '',
+        responseType: '',
     };
 
     /**
@@ -105,7 +107,7 @@ export default class HwSocket {
         const heartCheckOptions = this.heartCheckOptions;
         this.timer = setTimeout(() => {
             this.sendMessage(heartCheckOptions.responseType);
-        });
+        }, heartCheckOptions.interval);
     }
 
     /**

@@ -8,6 +8,8 @@
     import 'ztree/js/jquery-1.4.4.min';
     import 'ztree';
     import 'ztree/js/jquery.ztree.exhide';
+    import 'ztree/css/zTreeStyle/zTreeStyle.css';
+    import "../style/zTreeExtend.css";
 
     let getUniqueId = (() => {
         let index = 1000;
@@ -58,5 +60,4 @@
 </script>
 
 <style lang="scss">
-    @import "../style/zTreeExtend.css";
 </style>

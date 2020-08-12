@@ -15,7 +15,7 @@ if (sysConfig.px2rem && sysConfig.px2rem.enabled) {
     }, sysConfig.px2rem.options || {});
 
     moduleRules.push({
-        test: /\.(vue|scss)$/,
+        test: /\.(vue|scss|css)$/,
         loader: 'webpack-px2rem-loader',
         query: options
     });

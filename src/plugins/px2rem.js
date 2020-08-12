@@ -18,7 +18,7 @@ if (process.env.VUE_APP_PX2REM === 'enabled') {
      * @return {number}
      */
     window.px2rem = (px) => {
-        return Number((px / fontSize).toFixed(3));
+        return Number((px / basePx).toFixed(3));
     };
 
     /**
@@ -26,6 +26,6 @@ if (process.env.VUE_APP_PX2REM === 'enabled') {
      * @return {number}
      */
     window.rem2px = (rem) => {
-        return Number((rem * fontSize).toFixed(1));
+        return Number((rem * basePx).toFixed(1));
     };
 }

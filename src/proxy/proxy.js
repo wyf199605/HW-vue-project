@@ -80,7 +80,7 @@ export default class BaseProxy {
 
         return promise.then(res => {
             try {
-                typeof this.validator && this.validator(res);
+                typeof this.validator === "function" && this.validator(res);
             } catch (e) {
                 throw new RequestError(e);
             }

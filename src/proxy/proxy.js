@@ -78,6 +78,12 @@ export default class BaseProxy {
         }
         this.promiseMap.set(method, promise);
 
+        let abort = false;
+
+        promise.xhr.addEventListener("abort", () => {
+            abort = true;
+        });
+
         return promise.then(res => {
             try {
                 typeof this.validator === "function" && this.validator(res);
@@ -107,6 +113,9 @@ export default class BaseProxy {
         }).catch((e) => {
             console.error(`Request failed: ${method}`);
             console.error(e);
+            if (abort) {
+                throw e;
+            }
             if (e instanceof RequestError) {
                 if (!silent) {
                     this.errorHandler(e.message || '请求失败');
